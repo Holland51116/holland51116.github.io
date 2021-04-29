@@ -71,10 +71,10 @@
                 positionX += speedX;
                 moveBoxTo(positionX);
                 if (positionX > boardWidth) {
-                    speedX = -speedX;
+                    speedX = speedX * -1;
                 }
                 if (positionX < 0) {
-                    speedX = -speedX;
+                    speedX = speedX * -1;
                 }       
 			};
 
@@ -84,11 +84,17 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-                positionX = 0;
-                points = points + 1;
-                changeBoxText(points);
+                positionX = 0; 
                 speedX = speedX + 3;
+                if (speed > 0){
+                    speed = speed + 3;
+                }
+                else if (speed < 0) {
+                    speed = speed - 3;
+                }
+                points = points + 1;
 
+                changeBoxText(points);
 			};
 		})();
 	</script>
